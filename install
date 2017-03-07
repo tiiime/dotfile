@@ -1,0 +1,37 @@
+export NAME="xenial"
+
+cp /etc/apt/source.list /etc/apt/source.list.bak
+
+echo "deb https://mirrors.ustc.edu.cn/ubuntu/ $NAME main restricted universe multiverse"
+
+echo "deb https://mirrors.ustc.edu.cn/ubuntu/ $NAME-updates main restricted universe multiverse" >> /etc/apt/source.list
+
+echo "deb https://mirrors.ustc.edu.cn/ubuntu/ $NAME-backports main restricted universe multiverse" > /etc/apt/source.list
+
+echo "deb https://mirrors.ustc.edu.cn/ubuntu/ $NAME-security main restricted universe multiverse" > /etc/apt/source.list
+
+sudo apt-add-repository ppa:fixnix/netspeed
+sudo apt-get update
+sudo apt-get upgrade
+
+sudo apt-get install -y git\
+	indicator-netspeed-unity\
+	proxychains\
+	polipo\
+	vim\
+	zsh\
+	autojump\
+	aria2\
+	tmux\
+	tilda\
+	stardict
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+#Download 
+
+jdk
+android_sdk
+variety
+synergy
+sublime

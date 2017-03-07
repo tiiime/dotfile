@@ -1,0 +1,8 @@
+{
+    "server":"127.0.0.1",
+    "server_port":"LOCAL_PORT_FOR_SS",
+    "local_port":5566,
+    "password":"SS_PW",
+    "timeout":600,
+    "method":"aes-256-cfb"
+}

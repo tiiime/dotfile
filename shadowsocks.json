@@ -1,0 +1,8 @@
+{
+    "server":"REMOTE_IP",
+    "server_port":"REMOT_PORT_FOR_SS",
+    "local_port":1080,
+    "password":"SS_PW",
+    "timeout":600,
+    "method":"aes-256-cfb"
+}

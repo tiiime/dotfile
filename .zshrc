@@ -54,13 +54,13 @@ plugins=(git autojump)
 
 # User configuration
 export ANDROID_NDK="/home/kang/Android/android-ndk-r12b"
-export STUDIO_JDK="/home/kang/bin/jdk1.8.0_91"
-export JAVA_HOME="/home/kang/bin/jdk1.8.0_91"
+export STUDIO_JDK="/home/kang/bin/jdk1.8.0_121"
+export JAVA_HOME="/home/kang/bin/jdk1.8.0_121"
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH=$PATH:/home/kang/Android/Sdk/platform-tools/
 export PATH=$PATH:/home/kang/Android/Sdk/tools/
-export PATH=$PATH:~/tool/:$JAVA_HOME/bin
+export PATH=$PATH:/home/kang/tool/
 
 # export MANPATH="/usr/local/man:$MANPATH"
 

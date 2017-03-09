@@ -24,7 +24,10 @@ sudo apt-get install -y git\
 	aria2\
 	tmux\
 	tilda\
-	stardict
+	stardict\
+	ttf-wqy-microhei\
+	ttf-wqy-zenhei\
+	xfonts-wqy
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 

@@ -64,3 +64,7 @@ docker{
 
 	sudo service docker restart
 }
+gnome-panel{
+	sudo apt-get install --no-install-recommends gnome-panel
+	gnome-desktop-item-edit --create-new ~/.local/share/applications/
+}

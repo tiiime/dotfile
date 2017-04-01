@@ -68,3 +68,5 @@ gnome-panel{
 	sudo apt-get install --no-install-recommends gnome-panel
 	gnome-desktop-item-edit --create-new ~/.local/share/applications/
 }
+ruby
+ruby-dev

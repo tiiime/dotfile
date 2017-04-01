@@ -70,3 +70,10 @@ gnome-panel{
 }
 ruby
 ruby-dev
+ctag
+pinta
+vim-nox
+python-dev 
+python-pip 
+python3-dev 
+python3-pip

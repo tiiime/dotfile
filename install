@@ -30,6 +30,7 @@ sudo apt-get install -y git\
 	xfonts-wqy\
 	compizconfig-settings-manager\
 	tig\
+	httpie\
 
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"

@@ -1,11 +1,12 @@
-# Path to your oh-my-zsh installation.
-export ZSH=/home/kang/.oh-my-zsh
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-#ZSH_THEME="bira"
+# Path to your oh-my-zsh installation.
+export ZSH=/Users/kang/.oh-my-zsh
+
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="ys"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -50,21 +51,13 @@ ZSH_THEME="ys"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump)
-
-# User configuration
-export ANDROID_NDK="/home/kang/Android/android-ndk-r12b"
-export STUDIO_JDK="/home/kang/bin/jdk1.8.0_121"
-export JAVA_HOME="/home/kang/bin/jdk1.8.0_121"
-
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-export PATH=$PATH:/home/kang/Android/Sdk/platform-tools/
-export PATH=$PATH:/home/kang/Android/Sdk/tools/
-export PATH=$PATH:/home/kang/tool/
-
-# export MANPATH="/usr/local/man:$MANPATH"
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -80,7 +73,7 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -91,4 +84,3 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 if [ "$TMUX" = "" ]; then tmux; fi
-

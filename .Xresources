@@ -1,0 +1,17 @@
+URxvt.transparent: true
+URxvt.shading:20
+
+tilda.transparent: true
+tilda.shading:20
+
+i3bar.transparent: true
+i3bar.shading:20
+
+Terminal.transparent: true
+Terminal.shading:20
+
+rofi.transparent: true
+rofi.shading:20
+
+! Included this so you know how to make your foreground not match the color of your background
+! URxvt.foreground: #eeeeee

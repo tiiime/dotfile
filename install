@@ -31,7 +31,8 @@ sudo apt-get install -y git\
 	compizconfig-settings-manager\
 	tig\
 	httpie\
-	ibus-rime
+	ibus-rime\
+	lnav
 
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"

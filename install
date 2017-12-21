@@ -14,24 +14,24 @@ sudo apt-add-repository ppa:fixnix/netspeed
 sudo apt-get update
 sudo apt-get upgrade
 
-sudo apt-get install -y git\
-	indicator-netspeed-unity\
-	proxychains\
-	polipo\
-	vim\
-	zsh\
-	autojump\
-	aria2\
-	tmux\
-	tilda\
-	stardict\
-	ttf-wqy-microhei\
-	ttf-wqy-zenhei\
-	xfonts-wqy\
-	compizconfig-settings-manager\
-	tig\
-	httpie\
-	ibus-rime\
+sudo apt-get install -y git \
+	indicator-netspeed-unity \
+	proxychains \
+	polipo \
+	vim \
+	zsh \
+	autojump \
+	aria2 \
+	tmux \
+	tilda \
+	stardict \
+	ttf-wqy-microhei \
+	ttf-wqy-zenhei \
+	xfonts-wqy \
+	compizconfig-settings-manager \
+	tig \
+	httpie \
+	ibus-rime \
 	lnav
 
 

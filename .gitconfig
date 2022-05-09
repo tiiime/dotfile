@@ -9,6 +9,7 @@
         st = status
         co = checkout
         hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+	# https://stackoverflow.com/a/11768843/4097210
 	change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f "
 [core]
 	autocrlf = input

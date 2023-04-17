@@ -30,3 +30,4 @@ noremap <Space>l<Space> :action ShowReformatFileDialog<CR>
 noremap <Space>e<Space> :action RecentFiles<CR>
 noremap <Space>fu :action FindUsages<CR>
 noremap <Space>op :action $LRU<CR>
+noremap <Space>cl :action CloseProject<CR>

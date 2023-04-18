@@ -9,25 +9,49 @@ set clipboard+=unnamed
 #nnoremap <UP> kzz
 #nnoremap <DOWN> jzz
 
+# A
+
+# B
+noremap <Space>bl :action Annotate<CR>
+
+# C
+noremap <Space>c<Space> :action CleanGradleProject<CR>
+noremap <Space>cl :action CloseProject<CR>
+
+# E
+noremap <Space>e<Space> :action RecentFiles<CR>
+
+# F
+noremap <Space>fu :action FindUsages<CR>
+noremap <Space>f<Space> :action FindInPath<CR>
+
+# G
+noremap <Space>g<Space> :action Generate<CR>
+noremap <Space>gh :action Vcs.ShowTabbedFileHistory<CR>
+noremap <Space>gl :action Vcs.Show.Local.Changes<CR>
+
+# L
+noremap <Space>l<Space> :action ShowReformatFileDialog<CR>
+
+# O
+noremap <Space>op :action $LRU<CR>
+
+# P
+noremap <Space>p :action SelectInProjectView<CR>
+
+# R
+noremap <Space>r<Space> :action Run<CR>
 
 noremap <Space>rel :action Refactorings.QuickListPopupAction<CR>
 noremap <Space>ren :action RenameElement<CR>
 noremap <Space>res :action ChangeSignature<CR>
 
-noremap <Space><Space> :action GotoDeclaration<CR>
-noremap <Space>p :action SelectInProjectView<CR>
-
-noremap <Space>tig :action Vcs.Show.Log<CR>
-noremap <Space>gh :action Vcs.ShowTabbedFileHistory<CR>
-noremap <Space>gl :action Vcs.Show.Local.Changes<CR>
-
-noremap <Space>r<Space> :action Run<CR>
-noremap <Space>g<Space> :action Generate<CR>
-noremap <Space>c<Space> :action CleanGradleProject<CR>
+# S
 noremap <Space>s<Space> :action Android.SyncProject<CR>
-noremap <Space>f<Space> :action FindInPath<CR>
-noremap <Space>l<Space> :action ShowReformatFileDialog<CR>
-noremap <Space>e<Space> :action RecentFiles<CR>
-noremap <Space>fu :action FindUsages<CR>
-noremap <Space>op :action $LRU<CR>
-noremap <Space>cl :action CloseProject<CR>
+
+# T
+noremap <Space>tig :action Vcs.Show.Log<CR>
+
+# other
+noremap <Space><Space> :action GotoDeclaration<CR>
+

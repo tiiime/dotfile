@@ -18,11 +18,16 @@ noremap <Space>bl :action Annotate<CR>
 noremap <Space>c<Space> :action CleanGradleProject<CR>
 noremap <Space>cl :action CloseProject<CR>
 
+# D
+noremap <Space>d<Space> :action AndroidConnectDebuggerAction<CR>
+
+
 # E
 noremap <Space>e<Space> :action RecentFiles<CR>
 
 # F
 noremap <Space>fu :action FindUsages<CR>
+noremap <Space>fs :action FileStructurePopup<CR>
 noremap <Space>f<Space> :action FindInPath<CR>
 
 # G
@@ -54,4 +59,5 @@ noremap <Space>tig :action Vcs.Show.Log<CR>
 
 # other
 noremap <Space><Space> :action GotoDeclaration<CR>
+
 

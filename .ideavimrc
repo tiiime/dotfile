@@ -7,7 +7,6 @@ set which-key
 set relativenumber
 set clipboard+=unnamed
 
-# which-key 超时
 set notimeout
 
 #nnoremap <UP> kzz
@@ -64,3 +63,5 @@ noremap <Space>tig :action Vcs.Show.Log<CR>
 
 # other
 noremap <Space><Space> :action GotoDeclaration<CR>
+
+

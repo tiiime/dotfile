@@ -29,6 +29,7 @@ noremap <Space>d<Space> :action AndroidConnectDebuggerAction<CR>
 noremap <Space>e<Space> :action RecentFiles<CR>
 
 # F
+noremap <Space>fp :action GotoSuperMethod<CR>
 noremap <Space>fi :action GotoImplementation<CR>
 noremap <Space>fu :action FindUsages<CR>
 noremap <Space>fs :action FileStructurePopup<CR>

@@ -2,9 +2,13 @@ set multiple-cursors
 set vim-easymotion
 set vim-surround
 set vim-textobj-entire
+set which-key
 
 set relativenumber
 set clipboard+=unnamed
+
+# which-key 超时
+set notimeout
 
 #nnoremap <UP> kzz
 #nnoremap <DOWN> jzz
@@ -26,6 +30,7 @@ noremap <Space>d<Space> :action AndroidConnectDebuggerAction<CR>
 noremap <Space>e<Space> :action RecentFiles<CR>
 
 # F
+noremap <Space>fi :action GotoImplementation<CR>
 noremap <Space>fu :action FindUsages<CR>
 noremap <Space>fs :action FileStructurePopup<CR>
 noremap <Space>f<Space> :action FindInPath<CR>
@@ -59,5 +64,3 @@ noremap <Space>tig :action Vcs.Show.Log<CR>
 
 # other
 noremap <Space><Space> :action GotoDeclaration<CR>
-
-

@@ -1,13 +1,15 @@
 set multiple-cursors
-set vim-easymotion
-set vim-surround
-set vim-textobj-entire
+set easymotion
+set surround
+set textobj-entire
 set which-key
-
-set relativenumber
-set clipboard+=unnamed
+set argtextobj
 
 set notimeout
+
+# set relativenumber
+set clipboard+=unnamed
+
 
 #nnoremap <UP> kzz
 #nnoremap <DOWN> jzz
@@ -44,7 +46,11 @@ noremap <Space>gl :action Vcs.Show.Local.Changes<CR>
 noremap <Space>l<Space> :action ShowReformatFileDialog<CR>
 
 # O
-noremap <Space>op :action $LRU<CR>
+noremap <Space>o<Space> :action GotoAction<CR>
+noremap <Space>oo :action GotoClass<CR>
+noremap <Space>op :action GotoFile<CR>
+noremap <Space>os :action GotoSymbol<CR>
+noremap <Space>o[ :action $LRU<CR>
 
 # P
 noremap <Space>p :action SelectInProjectView<CR>
@@ -62,7 +68,10 @@ noremap <Space>s<Space> :action Android.SyncProject<CR>
 # T
 noremap <Space>tig :action Vcs.Show.Log<CR>
 
+# W
+noremap <Space>w\| <c-w>v
+noremap <Space>w- <c-w>s
+
 # other
 noremap <Space><Space> :action GotoDeclaration<CR>
-
 

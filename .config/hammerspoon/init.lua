@@ -1,6 +1,5 @@
 local yabai = require('yabai.init')
 local SecondStroke = require('SecondStroke.init')
-local actionMode = false
 
 -- hs.hotkey.bind({"cmd", "alt", "ctrl"}, "W", hawkeye.alert)
 -- hs.hotkey.bind({"shift", "ctrl"}, "space", hawkeye.queryHawkeye)
@@ -10,6 +9,9 @@ hs.hotkey.bind({"option"}, "x", yabai.mirrorX)
 hs.hotkey.bind({"option"}, "y", yabai.mirrorY)
 hs.hotkey.bind({"option", "shift"}, "f", yabai.toggleFloat)
 hs.hotkey.bind({"option"}, "r", yabai.rotateLayout)
+hs.hotkey.bind({"option"}, "n", yabai.stackFocusNext)
+hs.hotkey.bind({"option"}, "p", yabai.stackFocusPrev)
+hs.hotkey.bind({"option"}, "`", yabai.stackFocusLoop)
 
 -- 将当前 space 切换到指定的 space
 for i = 1, 5 do
@@ -32,10 +34,7 @@ end)
 
 -- 切换 autoRaise
 hs.hotkey.bind({"option"}, "a", function()
-    -- enter action mode
-    actionMode = not actionMode
-    yabai.autoRaise(actionMode)
-    hs.alert.show("Toggle action mode: " .. tostring(actionMode))
+    yabai.toggleAutoRaise()
 end)
 
 -- Cmd + Tab 只展示当前 space 的 window
@@ -55,54 +54,115 @@ tapCmdTab = hs.eventtap.new({hs.eventtap.event.types.keyDown}, mapCmdTab)
 tapCmdTab:start()
 
 local option_s_map = {{
-    mods = {"option"},
+    mods = {"option", "shift"},
     key = "up",
     value = function()
         yabai.swapWindowTo("north")
     end
 }, {
-    mods = {"option"},
+    mods = {"option", "shift"},
     key = "right",
     value = function()
         yabai.swapWindowTo("east")
     end
 }, {
-    mods = {"option"},
+    mods = {"option", "shift"},
     key = "down",
     value = function()
         yabai.swapWindowTo("south")
     end
 }, {
-    mods = {"option"},
+    mods = {"option", "shift"},
     key = "left",
     value = function()
         yabai.swapWindowTo("west")
     end
 }, {
-    mods = {},
+    mods = {"option"},
     key = "up",
     value = function()
         yabai.moveFocusToWindow("north")
     end
 }, {
-    mods = {},
+    mods = {"option"},
     key = "right",
     value = function()
         yabai.moveFocusToWindow("east")
     end
 }, {
-    mods = {},
+    mods = {"option"},
     key = "down",
     value = function()
         yabai.moveFocusToWindow("south")
     end
 }, {
-    mods = {},
+    mods = {"option"},
     key = "left",
     value = function()
         yabai.moveFocusToWindow("west")
     end
+}, {
+    mods = {"shift"},
+    key = "up",
+    value = function()
+        yabai.resizeWindow("up")
+    end
+}, {
+    mods = {"shift"},
+    key = "right",
+    value = function()
+        yabai.resizeWindow("right")
+    end
+}, {
+    mods = {"shift"},
+    key = "down",
+    value = function()
+        yabai.resizeWindow("down")
+    end
+}, {
+    mods = {"shift"},
+    key = "left",
+    value = function()
+        yabai.resizeWindow("left")
+    end
+}, {
+    mods = {},
+    key = "r",
+    value = function()
+        hs.alert.show("Config reloaded")
+        -- delay 1s
+        hs.timer.doAfter(1, function()
+            hs.reload()
+        end)
+    end
+}, {
+    mods = {},
+    key = "s",
+    value = function()
+        yabai.stickyWindow()
+    end
 }}
 
-optionS = SecondStroke:new({"option", "s"}, option_s_map)
-optionS:start()
+optionS_second = SecondStroke:new({"option", "s"}, option_s_map)
+optionS_second:start()
+
+hs.hotkey.bind({"ctrl"}, "`", function()
+    local app = hs.application.get("kitty")
+
+    if app then
+        if not app:mainWindow() then
+            app:selectMenuItem({"kitty", "New OS window"})
+        elseif app:isFrontmost() then
+            app:hide()
+        else
+            app:activate()
+        end
+    else
+        hs.application.launchOrFocus("kitty")
+        app = hs.application.get("kitty")
+    end
+
+
+    app:mainWindow():moveToUnit '[99,99,0.5,0.5]'
+    app:mainWindow().setShadows(false)
+end)

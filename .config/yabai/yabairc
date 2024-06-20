@@ -60,3 +60,8 @@ yabai -m rule --add app="^系统设置$" manage=off
 yabai -m rule --add app="^kitty$" manage=off
 yabai -m rule --add app="^kitty$" manage=off sticky=on
 
+# IDEA float window
+apps='^(Android Studio|IntelliJ IDEA|WebStorm|GoLand|PyCharm)$'
+yabai -m rule --add app="JetBrains Toolbox" manage=off
+yabai -m rule --add app="${apps}" manage=off
+yabai -m rule --add app="${apps}" title="( – )" manage=on

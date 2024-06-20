@@ -36,9 +36,18 @@ function Yabai.toggleFloat()
 end
 
 function Yabai.toggleZoom()
-    hs.alert.show("zoom!")
     -- run shell cmd
-    yabaiRun({"-m", "window", "--toggle", "zoom-fullscreen"})
+    -- yabai -m query --windows --window
+    yabaiRun({"-m", "query", "--windows", "--window"}, function(output, error)
+        local window = hs.json.decode(output)
+        local zoomed = window["has-fullscreen-zoom"]
+        if string.find(tostring(zoomed), "true") then
+            hs.alert.show("zoom out!")
+        else
+            hs.alert.show("zoom in!")
+        end
+        yabaiRun({"-m", "window", "--toggle", "zoom-fullscreen"})
+    end)
 end
 
 function Yabai.mirrorX()
@@ -57,12 +66,16 @@ function Yabai.moveToSpace(index)
 end
 
 -- #yabai -m config focus_follows_mouse autoraise
-function Yabai.autoRaise(enable)
-    if enable then
-        yabaiRun({"-m", "config", "focus_follows_mouse", "autoraise"})
-    else
-        yabaiRun({"-m", "config", "focus_follows_mouse", "off"})
-    end
+function Yabai.toggleAutoRaise()
+    yabaiRun({"-m", "config", "focus_follows_mouse"}, function(output, error)
+        if string.find(output, "autoraise") then
+            hs.alert.show("focus_follows_mouse: off")
+            yabaiRun({"-m", "config", "focus_follows_mouse", "off"})
+        else
+            hs.alert.show("focus_follows_mouse: auto-raise")
+            yabaiRun({"-m", "config", "focus_follows_mouse", "autoraise"})
+        end
+    end)
 end
 
 function Yabai.toggleLayout()
@@ -100,6 +113,45 @@ end
 -- 旋转 layout
 function Yabai.rotateLayout()
     yabaiRun({"-m", "space", "--rotate", "270"})
+end
+
+-- 切换 stack focus next
+function Yabai.stackFocusNext()
+    hs.alert.show("stackFocusNext")
+    yabaiRun({"-m", "window", "--focus", "stack.next"})
+end
+-- 切换 stack focus prev
+function Yabai.stackFocusPrev()
+    hs.alert.show("stackFocusPrev")
+    yabaiRun({"-m", "window", "--focus", "stack.prev"})
+end
+-- 切换 stack focus loop
+function Yabai.stackFocusLoop()
+    hs.alert.show("stackFocusLoop")
+    yabaiRun({"-m", "window", "--focus", "stack.next"}, function(output, error)
+        if not (error == '') then
+            yabaiRun({"-m", "window", "--focus", "stack.first"})
+        end
+    end)
+end
+
+-- 切换 stack focus loop
+function Yabai.stickyWindow()
+    hs.alert.show("stickyWindow")
+    yabaiRun({"-m", "window", "--toggle", "sticky"})
+end
+
+-- resize window
+function Yabai.resizeWindow(key)
+    hs.alert.show("resizeWindow(" .. key .. ")")
+    -- switch key
+    local keyMap = {
+        ["up"] = "bottom:0:-20",
+        ["down"] = "bottom:0:20",
+        ["left"] = "left:-20:0",
+        ["right"] = "right:20:0"
+    }
+    yabaiRun({"-m", "window", "--resize", keyMap[key]})
 end
 
 return Yabai

@@ -5,8 +5,8 @@ function yabaiRun(args, completion)
     local yabai_output = ""
     local yabai_error = ""
     -- Runs in background very fast
-    local yabai_task = hs.task.new("~/.local/bin/yabai", function(err, stdout, stderr)
-        print()
+    local yabai_task = hs.task.new("/Users/kang/.local/bin/yabai", function(err, stdout, stderr)
+        print("err:"..err, "stdout:"..stdout, "stderr:"..stderr)
     end, function(task, stdout, stderr)
         -- print("stdout:"..stdout, "stderr:"..stderr)
         if stdout ~= nil then
@@ -35,18 +35,60 @@ function Yabai.toggleFloat()
     yabaiRun({"-m", "window", "--toggle", "float"})
 end
 
+local focusWindow = {}
 function Yabai.toggleZoom()
     -- run shell cmd
     -- yabai -m query --windows --window
     yabaiRun({"-m", "query", "--windows", "--window"}, function(output, error)
         local window = hs.json.decode(output)
+        local id = window["id"]
         local zoomed = window["has-fullscreen-zoom"]
-        if string.find(tostring(zoomed), "true") then
+        local zoomed = string.find(tostring(zoomed), "true")
+        if zoomed then
             hs.alert.show("zoom out!")
         else
             hs.alert.show("zoom in!")
         end
-        yabaiRun({"-m", "window", "--toggle", "zoom-fullscreen"})
+        
+        -- 遍历 focusWindow
+        for k, v in pairs(focusWindow) do
+            if focusWindow[k] ~= nil then
+                focusWindow[k]:delete()
+            end
+        end
+        
+        yabaiRun({"-m", "window", "--toggle", "zoom-fullscreen"}, function(output, error)
+            local win = hs.window.focusedWindow()
+            local screen = win:screen()
+            local max = screen:fullFrame()
+            local f = win:frame()
+            local stroke = 6.0
+            local padding = 4.0
+            if not zoomed then
+                indicatorWIN = hs.canvas.new {
+                    x = max.x-padding,
+                    y = max.y-padding,
+                    h = max.h + padding*2 + stroke*2,
+                    w = max.w + padding*2 + stroke*2
+                }:appendElements({
+                    type = "rectangle",
+                    action = "stroke",
+                    strokeWidth = stroke,
+                    strokeColor = {
+                        green = 1.0
+                    },
+                    frame = {
+                        x = f.x,
+                        y = f.y,
+                        h = f.h+padding*2,
+                        w = f.w+padding*2
+                    }
+                }):show()
+                focusWindow[id] = indicatorWIN
+            else
+                focusWindow[id]:delete()
+            end
+        end)
     end)
 end
 
@@ -152,6 +194,25 @@ function Yabai.resizeWindow(key)
         ["right"] = "right:20:0"
     }
     yabaiRun({"-m", "window", "--resize", keyMap[key]})
+end
+
+-- stack window
+function Yabai.stackWindow(key)
+    hs.alert.show("stack(" .. key .. ")")
+    -- switch key
+    local keyMap = {
+        ["up"] = "north",
+        ["down"] = "south",
+        ["left"] = "west",
+        ["right"] = "east"
+    }
+    yabaiRun({"-m", "query", "--windows", "--window"}, function(output, error)
+        local window = hs.json.decode(output)
+        local id = window["id"]
+        -- yabai -m window east --stack $id
+        yabaiRun({"-m", "window", keyMap[key], "--stack", tostring(id)})
+
+    end)
 end
 
 return Yabai

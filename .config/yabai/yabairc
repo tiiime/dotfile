@@ -64,4 +64,11 @@ yabai -m rule --add app="^kitty$" manage=off sticky=on
 apps='^(Android Studio|IntelliJ IDEA|WebStorm|GoLand|PyCharm)$'
 yabai -m rule --add app="JetBrains Toolbox" manage=off
 yabai -m rule --add app="${apps}" manage=off
-yabai -m rule --add app="${apps}" title="( – )" manage=on
+yabai -m rule --add app="${apps}" title="^$" manage=on
+
+yabai -m rule --add app="企业微信" space=4
+yabai -m rule --add app="${apps}" space=1
+
+yabai -m space 4 --layout float
+
+yabai -m rule --apply

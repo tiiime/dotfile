@@ -1,3 +1,5 @@
+require("hs.ipc")
+
 local yabai = require('yabai.init')
 local SecondStroke = require('SecondStroke.init')
 
@@ -81,19 +83,19 @@ local option_s_map = {{
     mods = {"option"},
     key = "up",
     value = function()
-        yabai.moveFocusToWindow("north")
+        yabai.stackWindow("up")
     end
 }, {
     mods = {"option"},
     key = "right",
     value = function()
-        yabai.moveFocusToWindow("east")
+        yabai.stackWindow("right")
     end
 }, {
     mods = {"option"},
     key = "down",
     value = function()
-        yabai.moveFocusToWindow("south")
+        yabai.stackWindow("down")
     end
 }, {
     mods = {"option"},
@@ -102,28 +104,28 @@ local option_s_map = {{
         yabai.moveFocusToWindow("west")
     end
 }, {
-    mods = {"shift"},
-    key = "up",
+    mods = {"option"},
+    key = "j",
     value = function()
-        yabai.resizeWindow("up")
+        yabai.moveFocusToWindow("north")
     end
 }, {
-    mods = {"shift"},
-    key = "right",
+    mods = {"option"},
+    key = "l",
     value = function()
-        yabai.resizeWindow("right")
+        yabai.moveFocusToWindow("east")
     end
 }, {
-    mods = {"shift"},
-    key = "down",
+    mods = {"option"},
+    key = "k",
     value = function()
-        yabai.resizeWindow("down")
+        yabai.moveFocusToWindow("south")
     end
 }, {
-    mods = {"shift"},
-    key = "left",
+    mods = {"option"},
+    key = "h",
     value = function()
-        yabai.resizeWindow("left")
+        yabai.moveFocusToWindow("west")
     end
 }, {
     mods = {},
@@ -155,6 +157,10 @@ hs.hotkey.bind({"ctrl"}, "`", function()
         elseif app:isFrontmost() then
             app:hide()
         else
+            local windows = app:allWindows()
+            for _, window in ipairs(windows) do
+                hs.spaces.moveWindowToSpace(window, hs.spaces.focusedSpace())
+            end
             app:activate()
         end
     else
@@ -164,5 +170,4 @@ hs.hotkey.bind({"ctrl"}, "`", function()
 
 
     app:mainWindow():moveToUnit '[99,99,0.5,0.5]'
-    app:mainWindow().setShadows(false)
 end)

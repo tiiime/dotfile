@@ -125,6 +125,7 @@ alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
 alt-0 = 'workspace 0'
 
+alt-f = 'fullscreen'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = 'move-node-to-workspace 1'
@@ -181,4 +182,8 @@ run = ['layout floating','move-node-to-workspace 4']
 
 [[on-window-detected]]
 if.app-id = 'com.netease.163music'
+run = ['layout floating'] 
+
+[[on-window-detected]]
+if.app-id = 'com.apple.ActivityMonitor'
 run = ['layout floating'] 

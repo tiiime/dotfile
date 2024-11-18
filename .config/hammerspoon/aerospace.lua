@@ -9,7 +9,7 @@ hs.hotkey.bind({"ctrl"}, "`", function()
             app:selectMenuItem({"kitty", "New OS window"})
         elseif app:isFrontmost() then
             -- app:hide()
-            hs.execute("aerospace workspace-back-and-forth", true)
+            hs.execute("/opt/homebrew/bin/aerospace workspace-back-and-forth", false)
         else
             app:activate()
         end
